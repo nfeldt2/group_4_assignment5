@@ -10,8 +10,10 @@ void draw() {
   camera(-300, -300, 250, 500, 500, 250, 0, 1, 0);
   lights();
 
+  pushMatrix();
   translate(width / 2, height / 2);  
   scale(0.5);
   myTruck.move();
   myTruck.display();
+  popMatrix();
 }
