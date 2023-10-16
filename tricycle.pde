@@ -49,7 +49,7 @@ class Tricycle {
     pushMatrix();
     translate(x, y, z);
     rotateZ(PI/2);
-    rotateY(-angle); //
+    rotateY(-angle);
     tire(size, size/2);
     popMatrix();
   }
