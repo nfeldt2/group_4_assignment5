@@ -50,39 +50,34 @@ class Tricycle {
     translate(x, y, z);
     rotateZ(PI/2);
     rotateY(-angle); //
-    tire(size, size / 2);
+    tire(size, size/2);
     popMatrix();
   }
   
   void tire(float h, float r) {
     int detail = 20;
-    float angleIncrement = TWO_PI / detail;
-    float halfHeight = h / 2;
-  
+    float angleIncrement = TWO_PI/detail;
+    float halfHeight = h/2;
     fill(200);
   
     // tire exterior
     beginShape(TRIANGLE_FAN);
     vertex(0, halfHeight, 0);
-  
     for (int i = 0; i <= detail; i++) {
       float x1 = r * cos(angleIncrement * i);
       float z1 = r * sin(angleIncrement * i);
       vertex(x1, halfHeight, z1);
     }
-  
     endShape(CLOSE);
   
     // tire interior
     beginShape(TRIANGLE_FAN);
     vertex(0, -halfHeight, 0);
-  
     for (int i = 0; i <= detail; i++) {
       float x2 = r * cos(angleIncrement * i);
       float z2 = r * sin(angleIncrement * i);
       vertex(x2, -halfHeight, z2);
     }
-  
     endShape(CLOSE);
   
     // connect exterior and interior
