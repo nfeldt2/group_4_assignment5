@@ -55,40 +55,46 @@ class Tricycle {
   }
   
   void tire(float h, float r) {
-    int detail = 10;
-    fill(color(200));
+    int detail = 20;
+    float angleIncrement = TWO_PI / detail;
+    float halfHeight = h / 2;
   
-    // tire
-    beginShape(QUAD_STRIP);
-    for (int i = 0; i <= detail; i++) {
-      float theta = TWO_PI / detail * i;
-      float x = r * cos(theta);
-      float z = r * sin(theta);
-      vertex(x, -h/2, z);
-      vertex(x, h/2, z);
-    }
-    endShape();
+    fill(200);
   
     // tire exterior
     beginShape(TRIANGLE_FAN);
-    vertex(0, h/2, 0);
+    vertex(0, halfHeight, 0);
+  
     for (int i = 0; i <= detail; i++) {
-      float theta = TWO_PI / detail * i;
-      float x = r * cos(theta);
-      float z = r * sin(theta);
-      vertex(x, h/2, z);
+      float x1 = r * cos(angleIncrement * i);
+      float z1 = r * sin(angleIncrement * i);
+      vertex(x1, halfHeight, z1);
     }
-    endShape();
+  
+    endShape(CLOSE);
   
     // tire interior
     beginShape(TRIANGLE_FAN);
-    vertex(0, -h/2, 0);
+    vertex(0, -halfHeight, 0);
+  
     for (int i = 0; i <= detail; i++) {
-      float theta = TWO_PI / detail * i;
-      float x = r * cos(theta);
-      float z = r * sin(theta);
-      vertex(x, -h/2, z);
+      float x2 = r * cos(angleIncrement * i);
+      float z2 = r * sin(angleIncrement * i);
+      vertex(x2, -halfHeight, z2);
     }
-    endShape();
+  
+    endShape(CLOSE);
+  
+    // connect exterior and interior
+    beginShape(QUAD_STRIP);
+    for (int i = 0; i <= detail; i++) {
+      float x1 = r * cos(angleIncrement * i);
+      float z1 = r * sin(angleIncrement * i);
+      float x2 = r * cos(angleIncrement * i);
+      float z2 = r * sin(angleIncrement * i);
+      vertex(x1, halfHeight, z1);
+      vertex(x2, -halfHeight, z2);
+    }
+    endShape(CLOSE);
   }
 }
