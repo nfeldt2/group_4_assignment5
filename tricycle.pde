@@ -21,6 +21,7 @@ class Tricycle {
     rotateX(PI / 2); // body is parallel to ground
     box(bodyWidth, bodyDepth, bodyHeight);
 
+    // back wheels
     pushMatrix();
     translate(-bodyWidth/2 - wheelRadius + 25, 0);
     displayWheel(0, 50, 0, wheelRadius);
@@ -31,7 +32,15 @@ class Tricycle {
     displayWheel(0, 50, 0, wheelRadius);
     popMatrix();
 
+    // front wheel
     displayWheel(0, -50, 0, wheelRadius);
+
+    // cab
+    pushMatrix();
+    translate(0, 10, 20);
+    fill(color(255, 0, 0));
+    box(30, 50, 30);
+    popMatrix();
 
     popMatrix();
   }
