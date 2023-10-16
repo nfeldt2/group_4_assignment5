@@ -5,7 +5,7 @@ float angle = 0.0;
 void setup() {
   size(1000, 1000, P3D);
   myTruck = new Truck();
-  myTricycle = new Tricycle(100, 100, 50, 20, 100, 25);
+  myTricycle = new Tricycle(700, 0, 50, 20, 100, 25);
 }
 
 void draw() {
