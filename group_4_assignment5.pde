@@ -1,5 +1,6 @@
 Truck myTruck;
 Tricycle myTricycle;
+Car myCar;
 float angle = 0.0;
 PImage track;
 
@@ -7,6 +8,7 @@ void setup() {
   size(1000, 1000, P3D);
   myTruck = new Truck();
   myTricycle = new Tricycle(700, 0, 50, 20, 100, 25);
+  myCar = new Car();
   track = loadImage("racetrack.png");
 }
 
@@ -41,4 +43,13 @@ void draw() {
   rotateY(angle);
   myTricycle.display();
   popMatrix();
+
+  // car
+  pushMatrix();
+  translate(width/2, height/2);
+  scale(0.5);
+  myCar.move();
+  myCar.display();
+  popMatrix();
+
 }
