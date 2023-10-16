@@ -14,7 +14,7 @@ class Tricycle {
   }
 
   void display() {
-    angle += 0.01;
+    angle += 0.1;
     fill(color(255, 0, 0));
     pushMatrix();
     translate(x, y);
