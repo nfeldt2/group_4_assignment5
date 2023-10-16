@@ -46,7 +46,8 @@ void draw() {
 
   // car
   pushMatrix();
-  translate(width/2, height/2);
+  translate(width/2+200, height/2);
+  rotateY(PI/2);
   scale(0.5);
   myCar.move();
   myCar.display();
