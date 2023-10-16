@@ -2,6 +2,7 @@ class Tricycle {
   float x, y;
   float bodyWidth, bodyHeight, bodyDepth;
   float wheelRadius;
+  float angle = 0.0;
 
   Tricycle(float x, float y, float bodyWidth, float bodyHeight, float bodyDepth, float wheelRadius) {
     this.x = x;
@@ -13,6 +14,7 @@ class Tricycle {
   }
 
   void display() {
+    angle += 0.01;
     fill(color(255, 0, 0));
     pushMatrix();
     translate(x, y);
