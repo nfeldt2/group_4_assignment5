@@ -30,7 +30,7 @@ class Truck {
       targetZ = random(300, 1200);
       targetZ = position.z + targetZ;
       lerpFactor = 0;
-  }
+    }
   }
 
   void display() {
@@ -122,41 +122,41 @@ class Truck {
     popMatrix();
   }
 
-void tire(float h, float r) {
-  int detail = 30; // number of segments for the tire
+  void tire(float h, float r) {
+    int detail = 30; // number of segments for the tire
+    
+    // makes tire
+    // uses cos and sin function to make circle
+    beginShape(QUAD_STRIP);
+    for (int i = 0; i <= detail; i++) {
+      float theta = TWO_PI / detail * i;
+      float x = r * cos(theta);
+      float z = r * sin(theta);
+      vertex(x, -h/2, z);
+      vertex(x, h/2, z);
+    }
+    endShape();
+    
+    // outside of tire (from camera perspective)
+    beginShape(TRIANGLE_FAN);
+    vertex(0, h/2, 0); 
+    for (int i = 0; i <= detail; i++) {
+      float theta = TWO_PI / detail * i;
+      float x = r * cos(theta);
+      float z = r * sin(theta);
+      vertex(x, h/2, z);
+    }
+    endShape();
   
-  // makes tire
-  // uses cos and sin function to make circle
-  beginShape(QUAD_STRIP);
-  for (int i = 0; i <= detail; i++) {
-    float theta = TWO_PI / detail * i;
-    float x = r * cos(theta);
-    float z = r * sin(theta);
-    vertex(x, -h/2, z);
-    vertex(x, h/2, z);
+    // inside of tire
+    beginShape(TRIANGLE_FAN);
+    vertex(0, -h/2, 0); 
+    for (int i = 0; i <= detail; i++) {
+      float theta = TWO_PI / detail * i;
+      float x = r * cos(theta);
+      float z = r * sin(theta);
+      vertex(x, -h/2, z);
+    }
+    endShape();
   }
-  endShape();
-  
-  // outside of tire (from camera perspective)
-  beginShape(TRIANGLE_FAN);
-  vertex(0, h/2, 0); 
-  for (int i = 0; i <= detail; i++) {
-    float theta = TWO_PI / detail * i;
-    float x = r * cos(theta);
-    float z = r * sin(theta);
-    vertex(x, h/2, z);
-  }
-  endShape();
-
-  // inside of tire
-  beginShape(TRIANGLE_FAN);
-  vertex(0, -h/2, 0); 
-  for (int i = 0; i <= detail; i++) {
-    float theta = TWO_PI / detail * i;
-    float x = r * cos(theta);
-    float z = r * sin(theta);
-    vertex(x, -h/2, z);
-  }
-  endShape();
-}
 }
