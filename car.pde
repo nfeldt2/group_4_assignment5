@@ -72,24 +72,3 @@ popMatrix();
 }
 
 }
-
-float angle = 0.0;
-Car myCar;
-
-void setup(){
-size(1000, 1000, P3D);
-myCar = new Car();
-}
-
-void draw(){
-background(200);
-camera(-300, -300, 250, 500, 500, 250, 0, 1, 0);
-lights();
-
-pushMatrix();
-translate(width/2, height/2);
-scale(0.5);
-myCar.move();
-myCar.display();
-popMatrix();
-}
